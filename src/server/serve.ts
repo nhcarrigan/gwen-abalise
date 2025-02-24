@@ -58,12 +58,12 @@ export const instantiateServer = (): void => {
       response.send(html);
     });
 
-    server.listen({ port: 5010 }, (error) => {
+    server.listen({ port: 5012 }, (error) => {
       if (error) {
         void logger.error("instantiate server", error);
         return;
       }
-      void logger.log("debug", "Server listening on port 5010.");
+      void logger.log("debug", "Server listening on port 5012.");
     });
   } catch (error) {
     if (error instanceof Error) {
