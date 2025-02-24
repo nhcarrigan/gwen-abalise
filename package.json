@@ -1,6 +1,6 @@
 {
   "name": "gwen-abalise",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A ticket system for Discord",
   "main": "index.js",
   "type": "module",
