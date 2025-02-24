@@ -1,0 +1,23 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("MONGO_URI")
+}
+
+model Tickets {
+    id       String @id @default(auto()) @map("_id") @db.ObjectId
+    uuid     String
+    threadId String @unique
+    open     Boolean
+
+    @@index([uuid, open], map: "uuid_open")
+}
+
+model Roles {
+    id       String @id @default(auto()) @map("_id") @db.ObjectId
+    serverId String @unique
+    roleId   String
+}
