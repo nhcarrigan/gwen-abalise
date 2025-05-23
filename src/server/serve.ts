@@ -19,6 +19,7 @@ const html = `<!DOCTYPE html>
   <body>
     <main>
     <h1>Gwen Abalise</h1>
+        <img src="https://cdn.nhcarrigan.com/new-avatars/gwen-full.png" width="250" alt="Gwen" />
     <section>
       <p>Ticketing system for Discord!</p>
     </section>
