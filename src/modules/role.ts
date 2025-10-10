@@ -60,6 +60,7 @@ export const role = async(
     await interaction.editReply({
       content: `Your support role has been set to <@&${supportRole.id}>. This role will be pinged in new tickets.`,
     });
+    await logger.metric("role_command", 1, {});
   } catch (error) {
     await replyToError(interaction);
     if (error instanceof Error) {

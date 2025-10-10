@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "0.36.3",
-    "@nhcarrigan/logger": "1.0.0",
+    "@nhcarrigan/discord-analytics": "0.0.6",
+    "@nhcarrigan/logger": "1.1.1",
     "@prisma/client": "6.4.1",
     "discord.js": "14.18.0",
     "fastify": "5.2.1"

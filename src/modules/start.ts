@@ -109,6 +109,7 @@ export const start = async(
     await interaction.editReply({
       content: "Your ticket system is ready!",
     });
+    await logger.metric("start_command", 1, {});
   } catch (error) {
     await replyToError(interaction);
     if (error instanceof Error) {

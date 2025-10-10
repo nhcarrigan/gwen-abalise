@@ -12,6 +12,7 @@ import { role } from "./modules/role.js";
 import { start } from "./modules/start.js";
 import { instantiateServer } from "./server/serve.js";
 import { logger } from "./utils/logger.js";
+import { DiscordAnalytics } from "@nhcarrigan/discord-analytics";
 
 process.on("unhandledRejection", (error) => {
   if (error instanceof Error) {
@@ -32,6 +33,8 @@ process.on("uncaughtException", (error) => {
 const client = new Client({
   intents: [ GatewayIntentBits.Guilds ],
 });
+
+const analytics = new DiscordAnalytics(client, logger);
 
 const database = new PrismaClient();
 
@@ -98,6 +101,7 @@ client.on(Events.EntitlementDelete, (entitlement) => {
 
 client.on(Events.ClientReady, () => {
   void logger.log("debug", "Bot is ready.");
+  analytics.startCron();
 });
 
 instantiateServer();

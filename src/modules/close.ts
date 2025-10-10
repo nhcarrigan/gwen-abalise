@@ -106,6 +106,7 @@ Discord will auto-archive it, or if you are done discussing and want it out of t
     }).catch(() => {
       return null;
     });
+    await logger.metric("close_command", 1, {});
   } catch (error) {
     await replyToError(interaction);
     if (error instanceof Error) {

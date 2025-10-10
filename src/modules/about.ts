@@ -69,6 +69,7 @@ export const about = async(
       components: [ row ],
       embeds:     [ embed ],
     });
+    await logger.metric("about_command", 1, {});
   } catch (error) {
     await replyToError(interaction);
     if (error instanceof Error) {

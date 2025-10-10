@@ -107,6 +107,7 @@ export const open = async(
     await interaction.editReply({
       content: `Ticket created~!`,
     });
+    await logger.metric("open_command", 1, {});
   } catch (error) {
     await replyToError(interaction);
     if (error instanceof Error) {
