@@ -8,7 +8,7 @@ Gwen is a Discord bot that offers a private thread based ticketing system for yo
 
 ## Feedback and Bugs
 
-If you have feedback or a bug report, please feel free to open an issue!
+If you have feedback or a bug report, please [log a ticket on our forum](https://support.nhcarrigan.com).
 
 ## Contributing
 
