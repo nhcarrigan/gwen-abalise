@@ -91,6 +91,18 @@ client.on(Events.InteractionCreate, (interaction) => {
   }
 });
 
+client.on(Events.ThreadDelete, (thread) => {
+  void database.tickets.updateMany({
+    data: {
+      open: false,
+    },
+    where: {
+      open:     true,
+      threadId: thread.id,
+    },
+  });
+});
+
 client.on(Events.EntitlementCreate, (entitlement) => {
   void logger.log("info", `User ${entitlement.userId} has subscribed!`);
 });

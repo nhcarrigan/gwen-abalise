@@ -51,7 +51,7 @@ export const open = async(
       return;
     }
 
-    const { channel, user } = interaction;
+    const { channel, guild, user } = interaction;
 
     if (channel?.type !== ChannelType.GuildText) {
       await interaction.editReply({
@@ -68,10 +68,27 @@ export const open = async(
     });
 
     if (hasTicket) {
-      await interaction.editReply({
-        content: `You already have an open ticket: <#${hasTicket.threadId}>`,
+      const existingThread = await guild.channels.
+        fetch(hasTicket.threadId).
+        catch(() => {
+          return null;
+        });
+
+      if (existingThread) {
+        await interaction.editReply({
+          content: `You already have an open ticket: <#${hasTicket.threadId}>`,
+        });
+        return;
+      }
+
+      await database.tickets.update({
+        data: {
+          open: false,
+        },
+        where: {
+          id: hasTicket.id,
+        },
       });
-      return;
     }
 
     const ticket = await channel.threads.create({
